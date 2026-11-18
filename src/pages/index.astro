@@ -1,16 +1,15 @@
 ---
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <p class="mb-3 inline-block rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+    Open to funded PhD positions in Europe
+  </p>
+  <h1 class="max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
+    I work on federated learning and trustworthy, privacy-preserving AI.
+  </h1>
+  <p class="mt-6 max-w-2xl text-lg text-muted">
+    Placeholder text. The real introduction comes in the next step.
+  </p>
+</Layout>
