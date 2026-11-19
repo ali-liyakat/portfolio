@@ -1,0 +1,20 @@
+---
+interface Props {
+  id?: string;
+  tone?: "paper" | "band";
+  innerClass?: string;
+}
+
+const { id, tone = "paper", innerClass = "py-20" } = Astro.props;
+
+const tones = {
+  paper: "bg-paper",
+  band: "bg-band border-y border-line",
+};
+---
+
+<section id={id} class:list={["scroll-mt-16", tones[tone]]}>
+  <div class:list={["mx-auto max-w-5xl px-5", innerClass]}>
+    <slot />
+  </div>
+</section>

@@ -2,31 +2,49 @@
 import { site } from "../data/site";
 
 const links = [
-  { href: "/experience", label: "Experience" },
-  { href: "/education", label: "Education" },
-  { href: "/projects", label: "Projects" },
-  { href: "/research", label: "Research" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#education", label: "Education" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#research", label: "Research" },
+  { href: "/#contact", label: "Contact" },
 ];
-
-const path = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 border-b border-line bg-accent-soft/80 backdrop-blur">
   <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-3.5">
     <a href="/" class="font-serif text-lg font-semibold text-accent">{site.name}</a>
     <nav class="flex flex-wrap gap-x-5 gap-y-1 text-sm">
-      {links.map((l) => {
-        const active = path === l.href || path.startsWith(l.href + "/");
-        return (
-          <a
-            href={l.href}
-            class:list={["hover:text-accent", active ? "font-medium text-accent" : "text-ink/70"]}
-          >
-            {l.label}
-          </a>
-        );
-      })}
+      {links.map((l) => (
+        <a href={l.href} data-nav class="text-ink/70 hover:text-accent">{l.label}</a>
+      ))}
     </nav>
   </div>
 </header>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>("[data-nav]");
+  const ids = [...links].map((l) => l.hash.slice(1));
+
+  const setActive = (id: string) => {
+    links.forEach((l) => {
+      const on = l.hash.slice(1) === id;
+      l.classList.toggle("text-accent", on);
+      l.classList.toggle("font-medium", on);
+      l.classList.toggle("text-ink/70", !on);
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) setActive(e.target.id);
+      });
+    },
+    { rootMargin: "-40% 0px -55% 0px" }
+  );
+
+  [...ids, "home"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>

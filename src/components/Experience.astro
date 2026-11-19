@@ -1,0 +1,44 @@
+---
+import { experience } from "../data/experience";
+import Section from "./Section.astro";
+
+const palette = [
+  "bg-sky-100 text-sky-800",
+  "bg-emerald-100 text-emerald-800",
+  "bg-amber-100 text-amber-800",
+  "bg-violet-100 text-violet-800",
+  "bg-rose-100 text-rose-800",
+  "bg-teal-100 text-teal-800",
+];
+---
+
+<Section id="experience" tone="band">
+  <h2 class="text-3xl font-semibold">Experience</h2>
+
+  <ol class="mt-10 border-l border-accent/25 pl-6 sm:pl-8">
+    {experience.map((job) => (
+      <li class="relative pb-12 last:pb-0">
+        <span class="absolute -left-[1.9rem] top-2 h-3 w-3 rounded-full border-2 border-accent bg-white sm:-left-[2.4rem]"></span>
+
+        <h3 class="text-xl font-semibold leading-snug">{job.role}</h3>
+
+        <div class="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+          <p class="font-medium text-accent">{job.company}</p>
+          <p class="rounded-full bg-accent px-3 py-1 text-xs font-medium text-white">{job.period}</p>
+        </div>
+
+        <ul class="mt-4 list-disc space-y-2 pl-5 leading-relaxed text-muted marker:text-accent">
+          {job.points.map((point) => <li>{point}</li>)}
+        </ul>
+
+        <ul class="mt-5 flex flex-wrap gap-2">
+          {job.skills.map((skill, i) => (
+            <li class={`rounded-lg px-3 py-1.5 text-xs font-semibold ${palette[i % palette.length]}`}>
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ol>
+</Section>
