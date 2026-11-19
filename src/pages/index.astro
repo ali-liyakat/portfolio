@@ -1,15 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import { site } from "../data/site";
 ---
 
 <Layout>
-  <p class="mb-3 inline-block rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
-    Open to funded PhD positions in Europe
-  </p>
-  <h1 class="max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl">
-    I work on federated learning and trustworthy, privacy-preserving AI.
-  </h1>
-  <p class="mt-6 max-w-2xl text-lg text-muted">
-    Placeholder text. The real introduction comes in the next step.
-  </p>
+  <Hero />
+
+  <section class="mt-20">
+    <h2 class="text-2xl font-semibold">What I work on</h2>
+    <ul class="mt-5 flex flex-wrap gap-2">
+      {site.focus.map((item) => (
+                <li class="rounded-full border border-accent/20 bg-accent-tint px-3.5 py-1.5 text-sm font-medium text-accent">{item}</li>
+      ))}
+    </ul>
+  </section>
 </Layout>

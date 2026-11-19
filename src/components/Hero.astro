@@ -1,0 +1,52 @@
+---
+import { site } from "../data/site";
+import ProfilePhoto from "./ProfilePhoto.astro";
+
+const words = site.tagline.split(" ");
+
+const social = [
+  { label: "GitHub", href: site.links.github, external: true },
+  { label: "LinkedIn", href: site.links.linkedin, external: true },
+  { label: "Email", href: `mailto:${site.email}`, external: false },
+];
+---
+
+<section class="grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-14">
+  <div class="order-2 md:order-1">
+    <p class="mb-4 inline-block rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent">
+      {site.role}
+    </p>
+
+    <h1 class="text-4xl font-semibold leading-tight sm:text-5xl">
+      <span class="sr-only">{site.tagline}</span>
+      <span aria-hidden="true">
+        {words.map((word, i) => (
+          <span
+            class="mr-[0.25em] inline-block animate-word-in motion-reduce:animate-none"
+            style={`animation-delay: ${i * 140}ms`}
+          >
+            {word}
+          </span>
+        ))}
+      </span>
+    </h1>
+
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">{site.intro}</p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      {social.map((s) => (
+        <a
+          href={s.href}
+          class="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition hover:opacity-85"
+          {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
+          {s.label}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <div class="order-1 md:order-2">
+    <ProfilePhoto />
+  </div>
+</section>
