@@ -12,6 +12,9 @@ const palette = [
 ];
 
 const bars = ["bg-accent", "bg-teal-600"];
+
+const linkClass =
+  "underline decoration-accent/30 underline-offset-4 transition hover:text-accent hover:decoration-accent";
 ---
 
 <Section id="education" tone="paper">
@@ -24,7 +27,16 @@ const bars = ["bg-accent", "bg-teal-600"];
 
         <div class="flex flex-1 flex-col p-6">
           <h3 class="text-xl font-semibold leading-snug">{e.degree}</h3>
-          <p class="mt-1 font-medium text-accent">{e.institution}</p>
+
+          <p class="mt-1 font-medium text-accent">
+            {e.institutionUrl ? (
+              <a href={e.institutionUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+                {e.institution}
+              </a>
+            ) : (
+              e.institution
+            )}
+          </p>
           <p class="text-sm text-muted">{e.location}</p>
 
           <div class="mt-4 flex flex-wrap gap-2">
@@ -34,8 +46,25 @@ const bars = ["bg-accent", "bg-teal-600"];
 
           <div class="mt-5 rounded-lg bg-accent-soft/60 p-3 text-sm leading-relaxed">
             <span class="font-semibold text-accent">{e.highlight.label}: </span>
-            <span class="text-ink/80">{e.highlight.text}</span>
-            {e.advisor && <p class="mt-1 text-muted">Advisor: {e.advisor}</p>}
+            {e.highlight.url ? (
+              <a href={e.highlight.url} target="_blank" rel="noopener noreferrer" class={`${linkClass} text-ink/80`}>
+                {e.highlight.text} ↗
+              </a>
+            ) : (
+              <span class="text-ink/80">{e.highlight.text}</span>
+            )}
+            {e.advisor && (
+              <p class="mt-1 text-muted">
+                Advisor:{" "}
+                {e.advisorUrl ? (
+                  <a href={e.advisorUrl} target="_blank" rel="noopener noreferrer" class={linkClass}>
+                    {e.advisor}
+                  </a>
+                ) : (
+                  e.advisor
+                )}
+              </p>
+            )}
           </div>
 
           <ul class="mt-4 space-y-1.5 text-sm text-muted">
