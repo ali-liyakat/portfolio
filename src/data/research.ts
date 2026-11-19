@@ -19,6 +19,7 @@ export interface ResearchProject {
   title: string;
   shortName?: string;
   period: string;
+    award?: string;
   meta?: string;
   description: string;
   kpis?: Kpi[];
@@ -51,7 +52,7 @@ export const publications: Publication[] = [
   {
     title: "Implementing Federated Learning via IoTtalk: A Smart Home Case Study",
     authors: ["Liyakat Ali", "Chih-Yu Lin"],
-    venue: "2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS 2025), IEEE",
+    venue: "2025 IEEE VTS Asia Pacific Wireless Communications Symposium (APWCS 2025), Tokyo, Japan, IEEE",
     year: 2025,
     type: "Conference paper",
     links: { paper: "https://ieeexplore.ieee.org/document/11151953", pdf: "", code: "https://github.com/ali-liyakat/FLtalk-Federated-Learning-via-IoTtalk" },
@@ -97,12 +98,13 @@ export const researchProjects: ResearchProject[] = [
   },
   {
     label: "Lab project",
-    title: "NSTC Excellent Project Achievement Award",
+    title: "Federated Learning for Multimodal Vehicle Perception",
     period: "2025",
+    award: "Excellent Project Achievement Award · NSTC, Taiwan (2025)",
     meta: "Smart Networking Lab, National Taiwan Ocean University",
     description:
-      "Contributed to the Smart Networking Lab's research project, which received an Excellent Project Achievement Award from Taiwan's National Science and Technology Council (NSTC).",
-    skills: [],
+      "Part of the Smart Networking Lab team behind a federated learning project for multimodal vehicle perception, recognised with the Excellent Project Achievement Award by Taiwan's National Science and Technology Council (NSTC).",
+    skills: ["Federated Learning", "Multimodal Learning", "Vehicle Perception"],
     links: { award: "https://drive.google.com/file/d/1gxVtuAimiq2xuY6H-A9qVvxGMO46o9wb/view" },
   },
   {
