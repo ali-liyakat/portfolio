@@ -95,7 +95,7 @@ export const moreProjects: { name: string; summary: string; url?: string }[] = [
   },
   {
     name: "Real Estate Price Prediction",
-    summary: "Property price prediction model that uses a decision tree on location, size and amenity data to estimate market value, with feature engineering and cross-validation for reliable results.",
+    summary: "Property price prediction model that uses a Linear Regression on location, size and amenity data to estimate market value, with feature engineering and cross-validation for reliable results.",
     url: "https://github.com/ali-liyakat/Real-Estate-Price-Prediction",
   }
 ];
