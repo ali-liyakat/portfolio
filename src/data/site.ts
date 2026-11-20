@@ -1,6 +1,7 @@
 export const site = {
   name: "Liyakat Ali Joo",
   role: "AI Engineer & Researcher",
+  location: "Taiwan",
   tagline: "Building scalable, full-stack, deployment-grade AI systems, backed by research.",
   intro:
     "AI engineer and researcher focused on LLMs, RAG and agentic systems, turning research ideas into scalable, production-ready AI. My research background spans federated learning, privacy-preserving AI and computer vision.",
@@ -10,6 +11,9 @@ export const site = {
   links: {
     github: "https://github.com/ali-liyakat",
     linkedin: "https://www.linkedin.com/in/liyakat-ali",
+    kaggle: "https://www.kaggle.com/liyakatalijoo",
+    scholar: "",
+    orcid: "",
     cv: "/Liyakat-Ali-Joo-CV.pdf",
   },
   focus: [

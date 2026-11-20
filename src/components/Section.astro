@@ -1,7 +1,7 @@
 ---
 interface Props {
   id?: string;
-  tone?: "paper" | "band";
+  tone?: "paper" | "band" | "navy";
   innerClass?: string;
 }
 
@@ -10,6 +10,7 @@ const { id, tone = "paper", innerClass = "py-20" } = Astro.props;
 const tones = {
   paper: "bg-paper",
   band: "bg-band border-y border-line",
+  navy: "bg-accent text-white",
 };
 ---
 
