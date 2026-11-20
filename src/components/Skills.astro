@@ -1,0 +1,55 @@
+---
+import { skillGroups, strengths } from "../data/skills";
+import Section from "./Section.astro";
+
+const tones: Record<string, { dot: string; chip: string }> = {
+  violet: { dot: "bg-violet-500", chip: "bg-violet-100 text-violet-800" },
+  sky: { dot: "bg-sky-500", chip: "bg-sky-100 text-sky-800" },
+  emerald: { dot: "bg-emerald-500", chip: "bg-emerald-100 text-emerald-800" },
+  amber: { dot: "bg-amber-500", chip: "bg-amber-100 text-amber-800" },
+  teal: { dot: "bg-teal-500", chip: "bg-teal-100 text-teal-800" },
+  rose: { dot: "bg-rose-500", chip: "bg-rose-100 text-rose-800" },
+  indigo: { dot: "bg-indigo-500", chip: "bg-indigo-100 text-indigo-800" },
+};
+---
+
+<Section id="skills" tone="band">
+  <h2 class="text-3xl font-semibold">Skills</h2>
+
+  <div class="mt-10 grid gap-6 md:grid-cols-2">
+    {skillGroups.map((g) => (
+      <article
+        class:list={[
+          "rounded-2xl border border-line bg-white p-6 shadow-sm",
+          g.featured && "md:col-span-2",
+        ]}
+      >
+        <div class="flex items-center gap-3">
+          <span class={`h-2.5 w-2.5 rounded-full ${tones[g.tone].dot}`}></span>
+          <h3 class="text-lg font-semibold">{g.title}</h3>
+        </div>
+
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {g.skills.map((skill) => (
+            <li class={`rounded-lg px-3 py-1.5 text-xs font-semibold ${tones[g.tone].chip}`}>{skill}</li>
+          ))}
+        </ul>
+
+        {g.usedIn && (
+          <p class="mt-4 text-xs text-muted">
+            <span class="font-semibold text-ink/70">Used in:</span> {g.usedIn}
+          </p>
+        )}
+      </article>
+    ))}
+  </div>
+
+  <div class="mt-10">
+    <p class="text-xs font-semibold uppercase tracking-wide text-muted">Working style</p>
+    <ul class="mt-3 flex flex-wrap gap-2">
+      {strengths.map((s) => (
+        <li class="rounded-full border border-line bg-white px-3.5 py-1.5 text-sm text-ink/80">{s}</li>
+      ))}
+    </ul>
+  </div>
+</Section>
