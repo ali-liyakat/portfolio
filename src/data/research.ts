@@ -93,7 +93,11 @@ export const researchProjects: ResearchProject[] = [
       note: "Imbalanced MNIST benchmark (4,000 vs 40 samples per class). Baselines: 0.861 imbalanced FL, 0.951 local-only.",
     },
     skills: ["Federated Learning", "IoTtalk", "PyTorch", "FedAvg / FedAdam", "REST APIs"],
-    links: { thesis: "https://fltalk-system.onrender.com/", code: "https://github.com/ali-liyakat/FLTalk" },
+      links: {
+      thesis: "https://github.com/ali-liyakat/FLTalk/blob/main/A%20GUI%20Based%20Federated%20Learning%20Framework%20Implementation%20And%20Applications.pdf",
+      demo: "https://fltalk-system.onrender.com/",
+      code: "https://github.com/ali-liyakat/FLTalk",
+    },
     wide: true,
   },
   {
